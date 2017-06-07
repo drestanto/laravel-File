@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class UploadController extends Controller
 {
@@ -12,9 +13,18 @@ class UploadController extends Controller
     }
 
     public function store(Request $request) {
-    	if ($request->hasFile('image')) {
-    		// $request->file('image');
-    		Storage::putFileAs('public',$request->file('image'), $request->nama . ".jpg");
+    	$validator = Validator::make($request->all(), [
+	        'nama' => 'required',
+	    ]);
+	    if ($validator->fails()) {
+	        return back()
+	            ->withInput()
+	            ->withErrors($validator);
+	    }
+    	if ($request->hasFile('file')) {
+    		$ext = $request->file('file')->extension();
+    		$nama = $request->nama . "." . $ext;
+    		Storage::putFileAs('public',$request->file('file'), $nama);
     		return "File upload success!!";
     	} else return "No File Selected";
     }
