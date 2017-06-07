@@ -25,6 +25,10 @@ class UploadController extends Controller
     		$ext = $request->file('file')->extension();
     		$nama = $request->nama . "." . $ext;
     		Storage::putFileAs('public',$request->file('file'), $nama);
+
+    		$file = new \App\File;
+    		$file->path = $nama;
+    		$file->save();
     		return "File upload success!!";
     	} else return "No File Selected";
     }
