@@ -18,6 +18,4 @@ Route::get('/', function () {
 Route::get('/uploadfile','UploadFileController@index');
 Route::post('/uploadfile','UploadFileController@showUploadFile');
 
-Route::get('image', function() {
-	return view('upload.upload');
-});
+Route::get('upload', 'UploadController@index');
