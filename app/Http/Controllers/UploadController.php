@@ -43,6 +43,13 @@ class UploadController extends Controller
     	return "<img src='" . $url . "'>";
     }
 
+    public function showImageByName($name)
+    {
+        $path = DB::table('files')->where('name',$name)->first()->name;
+        $url = Storage::url($path);
+        return "<img src='" . $url . "'>";
+    }
+
     public function showAllImages()
     {
         $files = \App\File::all();
@@ -59,7 +66,7 @@ class UploadController extends Controller
         foreach ($files as $file) {
             $file->path = Storage::url($file->path);
         }
-        
+
         return view('upload.images',compact('files','keyword'));
     }
 }
