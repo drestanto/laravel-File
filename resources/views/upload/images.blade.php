@@ -10,17 +10,19 @@
 <body>
 	<h3> All Your Saved Images </h3>
 	<table>
+		@php $i = 1; @endphp
 		<tr>
-			<th> ID </th>
-			{{-- <th> Name </th> --}}
+			<th> No </th>
+			<th> Name </th>
 			<th> Image </th>
 		</tr>
 		@foreach ($files as $file)
-		<tr>
-			<th> {{ $file->id }} </th>
-			{{-- <th> {{ $file->name }} </th> --}}
-			<th> <img src='{{ $file->path }}'> </th>
-		</tr>
+			<tr>
+				<th> {{ $i }} </th>
+				<th> {{ $file->name }} </th>
+				<th> <img src='{{ $file->path }}'> </th>
+			</tr>
+			@php $i = $i+1; @endphp
 		@endforeach
 	</table>
 </body>
