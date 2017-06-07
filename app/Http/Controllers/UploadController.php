@@ -45,7 +45,7 @@ class UploadController extends Controller
 
     public function showImageByName($name)
     {
-        $path = DB::table('files')->where('name',$name)->first()->name;
+        $path = DB::table('files')->where('name',$name)->first()->path;
         $url = Storage::url($path);
         return "<img src='" . $url . "'>";
     }
