@@ -21,3 +21,4 @@ Route::post('/uploadfile','UploadFileController@showUploadFile');
 Route::get('upload', 'UploadController@index');
 Route::post('store', 'UploadController@store');
 Route::get('show/{path}', 'UploadController@showImage');
+Route::get('showAll', 'UploadController@showAllImages');

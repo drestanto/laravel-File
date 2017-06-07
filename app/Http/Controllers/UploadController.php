@@ -40,4 +40,9 @@ class UploadController extends Controller
     	$url = Storage::url($path);
     	return "<img src='" . $url . "'>";
     }
+
+    public function showAllImages()
+    {
+        return \App\File::all();
+    }
 }
