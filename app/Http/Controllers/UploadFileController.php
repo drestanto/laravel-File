@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+// FAIL!!!
 class UploadFileController extends Controller
 {
 	//open view
