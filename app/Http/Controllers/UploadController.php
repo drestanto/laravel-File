@@ -43,6 +43,10 @@ class UploadController extends Controller
 
     public function showAllImages()
     {
-        return \App\File::all();
+        $files = \App\File::all();
+        foreach ($files as $file) {
+            $file->path = Storage::url($file->path);
+        }
+        return view('upload.images',compact('files'));
     }
 }

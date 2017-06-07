@@ -1,7 +1,6 @@
 <html>
 <head>
 	<title>File Storage</title>
-	
 </head>
 <body>
 	<h1> File Uploader </h1>
