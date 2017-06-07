@@ -8,11 +8,13 @@ use Validator;
 
 class UploadController extends Controller
 {
-    public function index() {
+    public function index()
+    {
     	return view('upload.upload');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
     	$validator = Validator::make($request->all(), [
 	        'nama' => 'required',
 	    ]);
@@ -31,5 +33,11 @@ class UploadController extends Controller
     		$file->save();
     		return "File upload success!!";
     	} else return "No File Selected";
+    }
+
+    public function showImage($path)
+    {
+    	$url = Storage::url($path);
+    	return "<img src='" . $url . "'>";
     }
 }
