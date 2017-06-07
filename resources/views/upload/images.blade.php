@@ -9,21 +9,25 @@
 </style>
 <body>
 	<h3> All Your Saved Images </h3>
-	<table>
-		@php $i = 1; @endphp
-		<tr>
-			<th> No </th>
-			<th> Name </th>
-			<th> Image </th>
-		</tr>
-		@foreach ($files as $file)
+	@if ($files->isEmpty())
+		No result for {{ $keyword }}
+	@else
+		<table>
+			@php $i = 1; @endphp
 			<tr>
-				<th> {{ $i }} </th>
-				<th> {{ $file->name }} </th>
-				<th> <img src='{{ $file->path }}'> </th>
+				<th> No </th>
+				<th> Name </th>
+				<th> Image </th>
 			</tr>
-			@php $i = $i+1; @endphp
-		@endforeach
-	</table>
+				@foreach ($files as $file)
+					<tr>
+						<th> {{ $i }} </th>
+						<th> {{ $file->name }} </th>
+						<th> <img src='{{ $file->path }}'> </th>
+					</tr>
+					@php $i = $i+1; @endphp
+				@endforeach
+		</table>
+	@endif
 </body>
 </html>

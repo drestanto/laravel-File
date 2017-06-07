@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class UploadController extends Controller
 {
@@ -48,6 +49,17 @@ class UploadController extends Controller
         foreach ($files as $file) {
             $file->path = Storage::url($file->path);
         }
+
         return view('upload.images',compact('files'));
+    }
+
+    public function search($keyword)
+    {
+        $files = DB::table('files')->where('name','like', '%' . $keyword . '%')->get();
+        foreach ($files as $file) {
+            $file->path = Storage::url($file->path);
+        }
+        
+        return view('upload.images',compact('files','keyword'));
     }
 }
