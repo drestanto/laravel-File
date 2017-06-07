@@ -19,3 +19,4 @@ Route::get('/uploadfile','UploadFileController@index');
 Route::post('/uploadfile','UploadFileController@showUploadFile');
 
 Route::get('upload', 'UploadController@index');
+Route::post('store', 'UploadController@store');

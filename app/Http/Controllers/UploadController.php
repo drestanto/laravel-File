@@ -10,7 +10,7 @@ class UploadController extends Controller
     	return view('upload.upload');
     }
 
-    public function store() {
-    	
+    public function store(Request $request) {
+    	return $request->file('image');
     }
 }
